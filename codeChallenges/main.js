@@ -63,3 +63,46 @@ const finalGrade = (grade1, grade2, grade3) => {
     }
 };
 console.log(finalGrade(65, 34, 94));
+
+
+// Write a function, reportingForDuty(), that has two string parameters, rank and lastName, and returns a string in the following format: 'rank lastName reporting for duty!'
+const reportingForDuty = (rank, lastName) => `${rank} ${lastName} reporting for duty!`;
+console.log(reportingForDuty());
+
+
+//We wrote a function, rollTheDice(), which is supposed to simulate two dice being rolled and totalled. It's close to doing what we want, but there's something not quite right. Can you fix our code, please?
+const rollTheDice = () => {
+    // Math.random() gives us a random number from 0 up to, but not including, 1
+    // We multiplied that by 6 to get a number between 0 and up to, but not including, 6
+    // But since we actually wanted numbers from 1 to 6, inclusive, we added 1
+    let die1 = Math.floor(Math.random() * 6 + 1)
+    let die2 = Math.floor(Math.random() * 6 + 1)
+    return die1 + die2
+};
+
+
+//Write a function, calculateWeight(). It should:
+// have two parameters: earthWeight and planet
+// expect earthWeight to be a number
+// expect planet to be a string
+// return a number representing what that Earth-weight would equate to on the planet passed in.
+// Handle the following cases:
+// 'Mercury' weight = earthWeight * 0.378
+// 'Venus' weight = earthWeight * 0.907
+// 'Mars' weight = earthWeight * 0.377
+// 'Jupiter' weight = earthWeight * 2.36
+// 'Saturn' weight = earthWeight * 0.916
+//For all other inputs, return 'Invalid Planet Entry. Try: Mercury, Venus, Mars, Jupiter, or Saturn.'
+const calculateWeight = (earthWeight, planet) => {
+    if (isNaN(earthWeight)) {
+        return 'Invalid Earth Weight, please input a valid number';
+    }
+    let newPlanet = planet.charAt(0).toUpperCase() + planet.slice(1);
+    return (newPlanet === 'Mercury') ? earthWeight * 0.378
+        : (newPlanet === 'Venus') ? earthWeight * 0.907
+            : (newPlanet === 'Venus') ? earthWeight * 0.377
+                : (newPlanet === 'Venus') ? earthWeight * 2.36
+                    : (newPlanet === 'Venus') ? earthWeight * 0.916
+                        : 'Invalid Planet Entry. Try: Mercury, Venus, Mars, Jupiter, or Saturn.';
+};
+console.log(calculateWeight(100, 'Jupiter')); // Should print 236
