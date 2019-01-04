@@ -13,6 +13,13 @@ const keepNecessaryWords = word => {
 
     return word !== 'extremely' && word !== 'literally' && word !== 'actually';
 };
+
+// another callback function to do it
+const keepNecessaryWords1 = word => {
+    return !unnecessaryWords.includes(word);        // return the element that pass the condition, '!' is used to
+    // pass the necessary words, otherwise unnecessary words are passed in this function.
+};
+
 // apply callback function to storyWords array
 const betterWords = storyWord.filter(keepNecessaryWords);
 
