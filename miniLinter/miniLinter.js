@@ -17,14 +17,14 @@ const keepNecessaryWords = word => {
 // another callback function to do it
 const keepNecessaryWords1 = word => {
     return !unnecessaryWords.includes(word);        // return the element that pass the condition, '!' is used to
-    // pass the necessary words, otherwise unnecessary words are passed in this function.
+                                                    // pass the necessary words, otherwise unnecessary words are passed in this function.
 };
 
 // apply callback function to storyWords array
 const betterWords = storyWord.filter(keepNecessaryWords);
+//const betterWords = storyWord.filter(keepNecessaryWords1);
 
-
-// save all overused words in order into the a new array
+// save all overused words in order into a new array
 const findOverusedWords = word => {     // define the callback function used for
     return word === 'really' || word === 'very' || word === 'basically';
 };
@@ -48,7 +48,23 @@ const countTimesOfOverusedWords = () => {
 Times of the word 'very' used: ${count[1]}
 Times of the word 'basically' used: ${count[2]}`;
 };
-
+// another way to count times of overused words
+const countTimesOfOverusedWords1 = () => {
+    let count = [0, 0, 0];      // the array used to save the times used of 'really','very','basically'
+    for (word of storyWord) {       // for .. of statement to iterate the array
+        if (word === 'really') {
+            count[0] += 1;
+        } else if (word === 'very') {
+            count[1] += 1;
+        } else if (word === 'basically') {
+            count[2] += 1;
+        }
+    }
+    return `Times of the word 'really' used: ${count[0]}
+Times of the word 'very' used: ${count[1]}
+Times of the word 'basically' used: ${count[2]}`;
+};
+console.log(countTimesOfOverusedWords1());
 
 //Now, count how many sentences are in the paragraph.
 // calculate how many '.' and '!' in the string.
